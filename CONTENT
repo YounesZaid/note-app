@@ -1,0 +1,14 @@
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+
+const rootReducer = combineReducers({
+  projects,
+  auth
+});
+
+const initialState = {};
+
+const store = createStore(rootReducer, initialState);
+
+<Provider store={store}>
+</Provider>

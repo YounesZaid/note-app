@@ -15,7 +15,6 @@ export default class AddNoteInput extends Component {
         <div className="input-group-append">
           <a href="#create" className="btn btn-secondary btn-block" onClick={e => {
             e.preventDefault();
-            this.props.onNoteItemAdded(this.state.noteTitle);
             this.setState({ noteTitle: ""});
           }}>Create new note</a>
         </div>
