@@ -12,7 +12,7 @@ import AddNoteInput from '../Components/AddNoteInput';
 //   }
 // ];
 
-const selectedNote = "note-1";
+// const selectedNote = "note-1";
 
 const Sidebar = ({ store }) => {
   const notes = store.getState();
@@ -21,17 +21,19 @@ const Sidebar = ({ store }) => {
       <h3 className="page-title mb-3">My notes</h3>
       <div>
         <div className="mb-3">
-          <AddNoteInput store={store}/>
+          <AddNoteInput store={store} />
         </div>
         <div className="list-group list-group-transparent">
-          {notes.filter(note => note.id !== 'note-1').map(noteObject => (
+          {notes.map(noteObject => (
             <NoteItem key={noteObject.id}
               noteId={noteObject.id}
-              selectedNote={selectedNote}
+              selectedNote={noteObject.id}
               title={noteObject.noteTitle}
               onNoteItemClick={null}
-              onNoteItemDeleted={null} 
-              store={store} />
+              onNoteItemDeleted={() => store.dispatch({
+                type: "DELETE_NOTE",
+                id: noteObject.id
+              })} />
           ))}
         </div>
       </div>

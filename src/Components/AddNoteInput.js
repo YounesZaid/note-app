@@ -4,11 +4,10 @@ export default class AddNoteInput extends Component {
   state = {
     noteTitle: "",
   }
-
+  
   render() {
     const { store } = this.props;
     const { noteTitle } = this.state;
-    let nextNote = 0;
     return (
       <div className="input-group">
         <input type="text" className="form-control"
@@ -30,3 +29,5 @@ export default class AddNoteInput extends Component {
     )
   }
 }
+
+let nextNote = 0;
