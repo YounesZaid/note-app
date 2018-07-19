@@ -20,6 +20,7 @@ export default class AddNoteInput extends Component {
             store.dispatch({
               type: "CREATE_NOTE",
               noteTitle,
+              noteContent: "content",
               id: nextNote++
             })
             this.setState({ noteTitle: ""});

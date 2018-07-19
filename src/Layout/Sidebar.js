@@ -29,10 +29,7 @@ const Sidebar = ({ store, noteReducer, activeNoteReducer }) => {
               noteId={noteObject.id}
               selectedNote={noteObject.id}
               title={noteObject.noteTitle}
-              onNoteItemClick={() => store.dispatch({
-                type: "SELECT_NOTE",
-                id: noteObject.id
-              })}
+              onNoteItemClick={null}
               onNoteItemDeleted={(noteId) => store.dispatch({
                 type: "DELETE_NOTE",
                 id: noteId
