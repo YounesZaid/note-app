@@ -35,10 +35,12 @@ const Sidebar = (props) => {
                   id: noteId
                 })
               }}
-              onNoteItemDeleted={(noteId) => props.store.dispatch({
-                type: "DELETE_NOTE",
-                id: noteId
-              })}
+              onNoteItemDeleted={(noteId) => {
+                props.store.dispatch({
+                  type: "DELETE_NOTE",
+                  id: noteId
+                })
+              }}
               store={props.store}
               activeNoteReducer={props.activeNoteReducer} />
           ))}

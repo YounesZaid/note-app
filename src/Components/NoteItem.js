@@ -20,7 +20,6 @@ const NoteItem = (props) => {
           e.preventDefault();
           props.onNoteItemDeleted(props.noteId);
           // alert(props.noteId)
-
         }}>
           <i className="fe fe-delete"></i>
         </a>
