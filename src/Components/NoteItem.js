@@ -11,12 +11,8 @@ const NoteItem = (props) => {
       })
     }
       onClick={e => {
-        // props.onNoteItemClick(props.noteId);
-        props.store.dispatch({
-          type: "SELECT_NOTE",
-          id: props.noteId
-        })
-        console.log(props.activeNoteReducer);
+        props.onNoteItemClick(props.noteId);
+        // console.log(props.activeNoteReducer);
       }}>
       <span className="icon mr-3"><i className="fe fe-grid"></i></span>{props.title} with id {props.activeNoteReducer}
       {props.selectedNote !== -1 && <div className="ml-auto d-inline">
@@ -24,6 +20,7 @@ const NoteItem = (props) => {
           e.preventDefault();
           props.onNoteItemDeleted(props.noteId);
           // alert(props.noteId)
+
         }}>
           <i className="fe fe-delete"></i>
         </a>
