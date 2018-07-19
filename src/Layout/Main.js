@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { defaultState } from '../Reducers/noteReducer';
 
 class Main extends Component {
   state = {

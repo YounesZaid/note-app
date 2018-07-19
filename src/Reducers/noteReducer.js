@@ -1,12 +1,12 @@
-export const defaultState = [
+const defaultState = [
   {
     noteTitle: "Default Note",
     noteContent: "welcome to the Note App",
-    id: -1
+    id: '-1'
   }
 ];
 
-export const noteReducer = (state = defaultState, action) => {
+const noteReducer = (state = defaultState, action) => {
   switch (action.type) {
     case "CREATE_NOTE":
       return [
@@ -34,3 +34,4 @@ export const noteReducer = (state = defaultState, action) => {
   }
 }
 
+export default noteReducer;

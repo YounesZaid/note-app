@@ -1,48 +1,39 @@
 import React from 'react';
-// import classnames from 'classnames';
+import { connect } from 'react-redux';
 
 import NoteItem from '../Components/NoteItem';
 import AddNoteInput from '../Components/AddNoteInput';
 
-// const notesList = [
-//   {
-//     id: "note-1",
-//     title: "default",
-//     content: " welcome"
-//   }
-// ];
-
-// const selectedNote = "note-1";
-
 const Sidebar = (props) => {
-  // const notes = store.getState();
+  const { notes, dispatch, activeNote } = props;
   return (
     <div className="col-md-3">
       <h3 className="page-title mb-3">My notes</h3>
       <div>
         <div className="mb-3">
-          <AddNoteInput store={props.store} />
+          <AddNoteInput dispatch={dispatch} />
         </div>
         <div className="list-group list-group-transparent">
-          {props.noteReducer.map(noteObject => (
-            <NoteItem key={noteObject.id}
-              noteId={noteObject.id}
-              selectedNote={noteObject.id}
-              title={noteObject.noteTitle}
-              onNoteItemClick={(noteId) => {
-                props.store.dispatch({
+          {notes.map(note => (
+            <NoteItem key={note.id}
+              isActive={note.id === activeNote}
+              isDefault={note.id === '-1'}
+              title={note.noteTitle}
+              onSelect={(e) => {
+                e.preventDefault();
+                dispatch({
                   type: "SELECT_NOTE",
-                  id: noteId
+                  id: note.id
                 })
               }}
-              onNoteItemDeleted={(noteId) => {
-                props.store.dispatch({
+              onDelete={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dispatch({
                   type: "DELETE_NOTE",
-                  id: noteId
+                  id: note.id
                 })
-              }}
-              store={props.store}
-              activeNoteReducer={props.activeNoteReducer} />
+              }} />
           ))}
         </div>
       </div>
@@ -50,4 +41,11 @@ const Sidebar = (props) => {
   )
 }
 
-export default Sidebar;
+const mapStateToProps = (store) => {
+  return {
+    notes: store.notes,
+    activeNote: store.activeNote
+  }
+}
+
+export default connect(mapStateToProps)(Sidebar);

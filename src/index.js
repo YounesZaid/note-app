@@ -1,16 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-import appReducer from './Reducers/index';
+import appReducer from './Reducers';
 import App from './App';
 
-const render = () => {
-  ReactDOM.render(<App store={store} {...store.getState()} />, document.getElementById('root'));
-};
+let defaultState = {
+  notes: [
+    {
+      noteTitle: "Default Note",
+      noteContent: "welcome to the Note App",
+      id: '-1'
+    }
+  ], 
+  activeNote: '-1'
+}
 
+try {
+  defaultState = JSON.parse(localStorage.getItem('state'));
+} catch(e) {}
 
+const store = createStore(appReducer, defaultState);
 
-const store = createStore(appReducer);
-store.subscribe(render);
-render();
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>, 
+  document.getElementById('root')
+);
+
+store.subscribe(() => {
+  const state = store.getState();
+  try {
+    localStorage.setItem('state', JSON.stringify(state));
+  } catch(e) {}
+})
