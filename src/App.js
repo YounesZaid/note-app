@@ -7,13 +7,14 @@ import Main from './Layout/Main';
 
 export default class App extends Component {
   render() {
+    const { store } = this.props;
     return [
       <div key={0} className="page-main d-flex flex-column">
-        <Header />
+        <Header store={store} />
         <div className="container my-3 d-flex flex-grow-1">
           <div className="row flex-nowrap flex-grow-1 flex-column flex-md-row">
-            <Sidebar />
-            <Main />
+            <Sidebar store={store} />
+            <Main store={store} />
           </div>
         </div>
       </div>,

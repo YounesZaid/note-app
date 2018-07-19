@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
-const Main = (props) => {
+const Main = ({store}) => {
   return (
     <div className="col-md-9 mt-4 mt-md-0 d-flex flex-grow-1">
       <div className="card d-flex flex-grow-1 mb-0 flex-grow-1">

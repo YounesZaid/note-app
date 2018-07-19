@@ -6,6 +6,9 @@ export default class AddNoteInput extends Component {
   }
 
   render() {
+    const { store } = this.props;
+    const { noteTitle } = this.state;
+    let nextNote = 0;
     return (
       <div className="input-group">
         <input type="text" className="form-control"
@@ -15,6 +18,11 @@ export default class AddNoteInput extends Component {
         <div className="input-group-append">
           <a href="#create" className="btn btn-secondary btn-block" onClick={e => {
             e.preventDefault();
+            store.dispatch({
+              type: "CREATE_NOTE",
+              noteTitle,
+              id: nextNote++
+            })
             this.setState({ noteTitle: ""});
           }}>Create new note</a>
         </div>
