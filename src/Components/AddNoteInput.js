@@ -11,7 +11,7 @@ export default class AddNoteInput extends Component {
         <input type="text" className="form-control"
           value={this.state.noteTitle}
           onChange={e => this.setState({ noteTitle: e.target.value })}
-          aria-label="new note title" />
+          aria-label="new note title"/>
         <div className="input-group-append">
           <a href="#create" className="btn btn-secondary btn-block" onClick={e => {
             e.preventDefault();
