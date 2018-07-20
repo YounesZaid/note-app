@@ -18,7 +18,7 @@ class Main extends Component {
           </div>
           <div className="card-body d-flex flex-grow-1 p-1">
             <div className="d-flex flex-grow-1">
-              <textarea type="text" value={note[0].noteContent} onChange={(e) => {
+              <textarea className="w-100 border-0 bg-light p-3" type="text" value={note[0].noteContent} onChange={(e) => {
                 e.preventDefault();
                 dispatch({
                   type: UPDATE_NOTE,
