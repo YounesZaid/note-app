@@ -4,8 +4,8 @@ const activeNoteReducer = (state = defaultState, action) => {
   switch (action.type) {
     case "SELECT_NOTE":
       return action.id
-    
-      case 'DELETE_NOTE':
+
+    case 'DELETE_NOTE':
       if (action.id === state) {
         return defaultState;
       }

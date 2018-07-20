@@ -22,12 +22,16 @@ const noteReducer = (state = defaultState, action) => {
       return state.filter(note => note.id !== action.id)
 
     case "UPDATE_NOTE":
-      return state.map(note =>
-        note.id === action.id ?
-          {
+      return state.map(note => {
+        if (note.id === action.id) {
+          return {
             ...note,
             noteContent: action.noteContent
-          } : note
+          }
+        } else {
+          return note
+        }
+      }
       )
     default:
       return state
