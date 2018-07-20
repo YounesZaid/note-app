@@ -1,3 +1,9 @@
+import {
+  CREATE_NOTE,
+  DELETE_NOTE,
+  UPDATE_NOTE
+} from '../Constant';
+
 const defaultState = [
   {
     noteTitle: "Default Note",
@@ -8,7 +14,7 @@ const defaultState = [
 
 const noteReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case "CREATE_NOTE":
+    case CREATE_NOTE:
       return [
         ...state,
         {
@@ -18,10 +24,10 @@ const noteReducer = (state = defaultState, action) => {
         }
       ]
 
-    case "DELETE_NOTE":
+    case DELETE_NOTE:
       return state.filter(note => note.id !== action.id)
 
-    case "UPDATE_NOTE":
+    case UPDATE_NOTE:
       return state.map(note => {
         if (note.id === action.id) {
           return {

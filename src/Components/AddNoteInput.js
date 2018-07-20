@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import uid from 'uid';
+import {
+  CREATE_NOTE,
+  SELECT_NOTE,
+} from '../Constant';
 
 export default class AddNoteInput extends Component {
   state = {
@@ -20,13 +24,13 @@ export default class AddNoteInput extends Component {
             e.preventDefault();
             const id = uid();
             dispatch({
-              type: "CREATE_NOTE",
+              type: CREATE_NOTE,
               noteTitle,
               noteContent: "Edit note",
               id
             })
             dispatch({
-              type: 'SELECT_NOTE',
+              type: SELECT_NOTE,
               id
             })
             this.setState({ noteTitle: "" });

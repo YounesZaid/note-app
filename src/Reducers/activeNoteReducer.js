@@ -1,11 +1,16 @@
+import {
+  DELETE_NOTE,
+  SELECT_NOTE
+} from '../Constant'
+
 const defaultState = '-1';
 
 const activeNoteReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case "SELECT_NOTE":
+    case SELECT_NOTE:
       return action.id
 
-    case 'DELETE_NOTE':
+    case DELETE_NOTE:
       if (action.id === state) {
         return defaultState;
       }

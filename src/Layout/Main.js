@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { UPDATE_NOTE } from '../Constant';
 
 class Main extends Component {
   state = {
@@ -20,7 +21,7 @@ class Main extends Component {
               <textarea type="text" value={note[0].noteContent} onChange={(e) => {
                 e.preventDefault();
                 dispatch({
-                  type: "UPDATE_NOTE",
+                  type: UPDATE_NOTE,
                   id: activeNote,
                   noteContent: e.target.value,
                   noteTitle: "changed"
