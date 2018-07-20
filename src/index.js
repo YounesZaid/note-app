@@ -23,7 +23,7 @@ try {
     defaultState = JSON.parse(notes);
 } catch(e) {}
 
-const store = createStore(appReducer);
+const store = createStore(appReducer, defaultState);
 
 ReactDOM.render(
   <Provider store={store}>
